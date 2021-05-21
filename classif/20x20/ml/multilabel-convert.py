@@ -1,4 +1,3 @@
-#!/usr/bin/python3.8
 #Converts the .arff dataset into a clearer version to execute some measures like Card, dens and distinct.
 
 import sys
