@@ -7,7 +7,7 @@ from natsort import index_natsorted, natsorted, natsort_keygen
 
 import glob,os
 
-for filepath in glob.iglob('./original/*.txt'):
+for filepath in glob.iglob('./trento/*.txt'):
     fdata = pd.read_csv(filepath, sep='\t',names=['cellid','time','countrycode','smsin','smsout','callin','callout','internet' ])
     fdata['time']=pd.to_datetime(fdata['time']+3600000, unit='ms') #+3600000 to change timezone
     filt=fdata.sort_values(
