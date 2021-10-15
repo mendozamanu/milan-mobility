@@ -1,0 +1,30 @@
+Instances: 400
+Features: 168
+Labels: 5
+Cardinality: 2.2525
+Density: 0.4505
+Distinct: 11
+Num of instances per label-count (0, 1, 2, ... nlabel)
+0 0
+1 19
+2 261
+3 120
+4 0
+Labels frequency: 
+1 321
+2 215
+5 180
+3 131
+4 54
+Label combinations frequency: 
+24 137
+25 76
+20 47
+21 43
+5 38
+3 20
+18 17
+2 16
+4 3
+9 2
+19 1

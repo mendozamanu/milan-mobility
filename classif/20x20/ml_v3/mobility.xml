@@ -1,0 +1,7 @@
+<experimento>
+    <dataset filename="/home/manu/Documentos/milan-mobility/classif/20x20/ml_v3/classif20x20week_callout.arff" op1="True" op2="True" op3="True" op4="True"/>
+    <dataset filename="/home/manu/Documentos/milan-mobility/classif/20x20/ml_v3/classif20x20week_internet.arff" op1="True" op2="True" op3="True" op4="True"/>
+    <dataset filename="/home/manu/Documentos/milan-mobility/classif/20x20/ml_v3/classif20x20week_smsin.arff" op1="True" op2="True" op3="True" op4="True"/>
+    <dataset filename="/home/manu/Documentos/milan-mobility/classif/20x20/ml_v3/classif20x20week_smsout.arff" op1="True" op2="True" op3="True" op4="True"/>
+    <dataset filename="/home/manu/Documentos/milan-mobility/classif/20x20/ml_v3/classif20x20week_callin.arff" op1="True" op2="True" op3="True" op4="True"/>
+</experimento>
