@@ -11,6 +11,8 @@ from skmultilearn.problem_transform import BinaryRelevance
 from skmultilearn.problem_transform import LabelPowerset
 from skmultilearn.problem_transform import ClassifierChain
 from skmultilearn.adapt import MLkNN
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.svm import SVC
 import functools
 import sklearn.metrics.base  
 
@@ -125,9 +127,9 @@ if len(sys.argv)>2:
 
 classifier = {
     BinaryRelevance(classifier=KNeighborsClassifier(n_neighbors=10),require_dense=[False,True]),
-    #LabelPowerset(classifier=KNeighborsClassifier(n_neighbors=5),require_dense=[False,True]),
-    #ClassifierChain(classifier=KNeighborsClassifier(n_neighbors=5),require_dense=[False,True]),
-    #MLkNN(k=10)
+    LabelPowerset(classifier=RandomForestClassifier(max_depth=2, random_state=0),require_dense=[False,True]),
+    ClassifierChain(classifier=SVC(gamma='scale', probability=True),require_dense=[False,True]),
+    #MLkNN(k=5)
 }
 
 nfolds=10
@@ -222,26 +224,26 @@ for cl in classifier:
         if fd is not None:
             fd.write(str(s)+';')
             #fp.write("Accuracy: ")
-            fd.write(str(sum(fold_accuracy)/len(fold_accuracy))+';')
+            fd.write(str(fold_accuracy)+';')
             #fp.write("Hamming loss: ")
-            fd.write(str(sum(fold_hamming)/len(fold_hamming))+';')
+            fd.write(str(fold_hamming)+';')
 
             #fp.write("Coverage: ")
             if len(fold_cover)>0:
-                fd.write(str(sum(fold_cover)/len(fold_cover))+';')
+                fd.write(str(fold_cover)+';')
 
             #fp.write("Ranking loss: ")
             if len(fold_rank)>0:
-                fd.write(str(sum(fold_rank)/len(fold_rank))+';')
+                fd.write(str(fold_rank)+';')
 
             #fp.write("Mean average precision (macro, micro): ")
             if len(fold_prec)>0:
-                fd.write(str(sum(fold_prec)/len(fold_prec))+';')
-                fd.write(str(sum(fold_precm)/len(fold_precm))+';')
+                fd.write(str(fold_prec)+';')
+                fd.write(str(fold_precm)+';')
 
             #fp.write("Micro-average AUC: ")
             if len(fold_auc)>0:
-                fd.write(str(sum(fold_auc)/len(fold_auc))+';')
+                fd.write(str(fold_auc)+';')
 
             d = classification_report(y_test,y_score, digits=20, output_dict=True)
             #es un dict de dicts -> en micro avg -> recall y f1-score
@@ -262,8 +264,10 @@ for cl in classifier:
 
     fold_accuracy = []
     fold_hamming = []
+    fold_cover = []
+    fold_rank = []
     fold_prec = []
+    fold_precm = []
     fold_auc = []
     predictions = []
     ground_truth = []
-    
