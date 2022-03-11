@@ -126,9 +126,9 @@ if len(sys.argv)>2:
     act=1
 
 classifier = {
-    BinaryRelevance(classifier=KNeighborsClassifier(n_neighbors=10),require_dense=[False,True]),
+    #BinaryRelevance(classifier=KNeighborsClassifier(n_neighbors=10),require_dense=[False,True]),
     LabelPowerset(classifier=RandomForestClassifier(max_depth=2, random_state=0),require_dense=[False,True]),
-    ClassifierChain(classifier=SVC(gamma='scale', probability=True),require_dense=[False,True]),
+    #ClassifierChain(classifier=SVC(gamma='scale', probability=True),require_dense=[False,True]),
     #MLkNN(k=5)
 }
 
